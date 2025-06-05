@@ -73,7 +73,7 @@ $nav_links = [
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center space-x-2 text-gray-600">
                         <i class="fas fa-user-circle text-2xl"></i>
-                        <span class="hidden md:block">Admin User</span>
+                        <span class="hidden md:block"><?= $_SESSION['user']['username'] ?></span>
                     </div>
                     <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center">
                         <i class="fas fa-sign-out-alt mr-2"></i>

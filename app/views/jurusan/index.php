@@ -28,6 +28,7 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?= count($data['jurusan']) > 0 ? "" : '<p class="text-center text-2xl font-bold text-gray-600 mt-8">Data jurusan tidak ditemukan</p>' ?>
     </div>
 </main>
 
