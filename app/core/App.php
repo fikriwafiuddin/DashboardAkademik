@@ -15,6 +15,11 @@ class App {
             unset($url[0]);
         }
 
+        if(!isset($_SESSION['user']) && $this->controller != 'Auth') {
+            $this->controller = 'Auth';
+            $this->method = 'login';
+        }
+
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
 

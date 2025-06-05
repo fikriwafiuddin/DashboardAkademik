@@ -45,3 +45,15 @@ openModalEditJurusan?.addEventListener("click", () => {
 closeModalEditJurusan?.addEventListener("click", () => {
   modalEditJurusan?.classList.add("hidden")
 })
+
+const logoutBtn = document.getElementById("logoutBtn")
+const logoutModal = document.getElementById("logoutModal")
+const cancelLogout = document.getElementById("cancelLogout")
+
+logoutBtn?.addEventListener("click", () => {
+  logoutModal?.classList.remove("hidden")
+})
+
+cancelLogout?.addEventListener("click", () => {
+  logoutModal?.classList.add("hidden")
+})

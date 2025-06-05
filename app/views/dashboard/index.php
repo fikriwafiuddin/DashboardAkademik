@@ -1,3 +1,5 @@
+<?php Flaser::flash(); ?>
+
 <?php
 
 $jumlah_jurusan = $data['jumlah_jurusan'];

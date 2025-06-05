@@ -1,5 +1,5 @@
 <?php
-define('BASEURL', 'http://localhost/tugas_uas/public');
+define('BASEURL', 'http://localhost/dashboard%20akademik/public');
 
 // DB
 define('DB_HOST', 'localhost');
