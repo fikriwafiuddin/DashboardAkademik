@@ -9,7 +9,8 @@ class Dashboard extends Controller {
 
         $data['jumlah_jurusan'] = $this->model('Jurusan_model')->getCountJurusan();
         $data['jumlah_dosen'] = $this->model("Dosen_model")->getCountDosen();
-        $this->view('templates/header');  
+        $data['title'] = 'Dashboard';
+        $this->view('templates/header', $data);  
         $this->view('dashboard/index', $data);  
         $this->view('templates/footer');  
     }

@@ -20,8 +20,9 @@ class Dosen extends Controller {
         $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan('');
         $data['totalPages'] = $totalPages;
         $data['page'] = $page;
-        
-        $this->view('templates/header');
+        $data['title'] = 'Data Dosen';
+
+        $this->view('templates/header', $data);
         $this->view('dosen/index', $data);
         $this->view('templates/footer');
     }
@@ -31,7 +32,8 @@ class Dosen extends Controller {
         $data['dosen'] = $this->model('Dosen_model')->getDosenById($nidn);
         $data['jabatan'] = $this->model('Jabatan_model')->getAllJabatan();
         $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan();
-        $this->view('templates/header');
+        $data['title'] = 'Detail Dosen';
+        $this->view('templates/header', $data);
         $this->view('dosen/detail', $data);
         $this->view('templates/footer');
     }

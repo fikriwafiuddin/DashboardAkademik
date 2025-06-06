@@ -1,5 +1,6 @@
 <?php
 $current_url = $_SERVER['REQUEST_URI'];
+$title = $data['title'];
 
 $nav_links = [
     [
@@ -25,7 +26,7 @@ $nav_links = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Akademik</title>
+    <title><?= $title ?></title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
@@ -52,10 +53,6 @@ $nav_links = [
                         <span><?= $link['title'] ?></span>
                     </a>
                 <?php endforeach; ?>
-                <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 rounded-lg transition-colors duration-200" data-section="laporan">
-                    <i class="fas fa-chart-bar mr-3"></i>
-                    <span>Laporan</span>
-                </a>
             </div>
         </nav>
     </div>
@@ -69,7 +66,7 @@ $nav_links = [
                     <button id="sidebarToggle" class="text-gray-500 hover:text-gray-700 focus:outline-none lg:hidden">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
-                    <h2 id="pageTitle" class="text-xl lg:text-2xl font-semibold text-gray-800 ml-4">Dashboard</h2>
+                    <h2 id="pageTitle" class="text-xl lg:text-2xl font-semibold text-gray-800 ml-4"><?= $title ?></h2>
                 </div>
                 
                 <div class="flex items-center space-x-4">

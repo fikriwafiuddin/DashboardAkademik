@@ -7,7 +7,8 @@ class Jurusan extends Controller {
 
         $jurusan = $this->model("Jurusan_model")->getAllJurusan($search);
         $data['jurusan'] = $jurusan;
-        $this->view('templates/header');
+        $data['title'] = 'Data Jurusan';
+        $this->view('templates/header', $data);
         $this->view('jurusan/index', $data);
         $this->view('templates/footer');
     }
@@ -29,7 +30,8 @@ class Jurusan extends Controller {
     {
         $data['jurusan'] = $this->model('Jurusan_model')->getJurusanById($id);
         $data['dosen'] = $this->model("Dosen_model")->getDosenByJurusan($id);
-        $this->view("templates/header");
+        $data['title'] = 'Detail Jurusan';
+        $this->view("templates/header", $data);
         $this->view("jurusan/detail", $data);
         $this->view("templates/footer");
     }
