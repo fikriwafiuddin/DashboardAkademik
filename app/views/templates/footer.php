@@ -57,12 +57,6 @@
         </div>
     </div>
 
-    <script>
-        // Navigation functionality
-        const navItems = document.querySelectorAll('.nav-item');
-        const contentSections = document.querySelectorAll('.content-section');
-        const pageTitle = document.getElementById('pageTitle');
-    </script>
     <script src="<?= BASEURL; ?>/js/script.js"></script>
 </body>
 </html>

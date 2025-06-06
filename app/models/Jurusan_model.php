@@ -63,4 +63,12 @@ class Jurusan_model extends Database {
         $row = $this->db->singleValue();
         return $row[0] ?? null;
     }
+
+    public function getCountDosenPerJurusan()
+    {
+        $query = "SELECT COUNT(dosen.jurid) AS jumlah_dosen, nama_jurusan FROM dosen, jurusan WHERE dosen.jurid = jurusan.jurid GROUP BY 
+                            jurusan.jurid, jurusan.nama_jurusan";
+        $this->db->query($query);
+        return $this->db->resultSet();
+    }
 }
