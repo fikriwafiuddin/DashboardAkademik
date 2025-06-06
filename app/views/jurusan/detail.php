@@ -19,27 +19,38 @@ $jurusan = $data['jurusan'];
             <div class="col-span-2">: <?= htmlspecialchars($jurusan['nama_jurusan']) ?></div>
         </div>
         <h3 class="text-xl font-semibold mt-6">Data dosen:</h3>
-        <table class="w-full mt-4">
-            <thead class="bg-gray-100">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
                 <tr>
-                    <th class="px-3 py-1 text-left">NIDN</th>
-                    <th class="px-3 py-1 text-left">Nama</th>
-                    <th class="px-3 py-1 text-left">Fakultas</th>
-                    <th class="px-3 py-1 text-left">Jabatan</th>
-                    <th class="px-3 py-1 text-left" colspan="2">Aksi</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIDN</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fakultas</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jabatan</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody class="bg-white divide-y divide-gray-200">
                 <?php foreach ($data['dosen'] as $col) : ?>
-                    <tr>
-                        <?php foreach ($col as $key => $value) : ?>
-                            <td class="px-3 py-1"><?= $value ?></td>
-                        <?php endforeach; ?>
-                        <td class="px-3 py-1 flex gap-2 items-center">
-                            <a class="px-2 bg-red-600 text-white rounded-sm" href="<?= BASEURL; ?>/dosen/delete/<?= $col['nidn'] ?>">hapus</a>
-                            <a class="px-2 bg-blue-600 text-white rounded-sm" href="<?= BASEURL; ?>/dosen/detail/<?= $col['nidn'] ?>">detail</a>
-                        </td>     
-                    </tr>
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= $col['nidn'] ?></td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900"><?= $col['nama_dosen'] ?></div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= $col['jurusan'] ?></td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            <?= $col['jabatan'] ?>
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <a href="<?= BASEURL; ?>/dosen/detail/<?= $col['nidn'] ?>" class="text-blue-600 hover:text-blue-900 mr-3">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="<?= BASEURL; ?>/dosen/delete/<?= $col['nidn'] ?>" class="text-red-600 hover:text-red-900">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
