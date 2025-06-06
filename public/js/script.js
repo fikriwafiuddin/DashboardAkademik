@@ -69,3 +69,15 @@ sidebarToggle?.addEventListener("click", () => {
 closeSidebar?.addEventListener("click", () => {
   sidebar?.classList.add("hidden")
 })
+
+const modalEksDsn = document.getElementById("modalEksDsn")
+const openModalEksDsn = document.getElementById("openModalEksDsn")
+const closeModalEksDsn = document.getElementById("closeModalEksDsn")
+
+openModalEksDsn?.addEventListener("click", () => {
+  modalEksDsn?.classList.remove("hidden")
+})
+
+closeModalEksDsn?.addEventListener("click", () => {
+  modalEksDsn?.classList.add("hidden")
+})

@@ -116,4 +116,22 @@ class Dosen_model extends Database {
         $row = $this->db->singleValue();
         return $row[0] ?? 0;
     }
+
+    public function getAllDosenComplete()
+    {
+      $query = "SELECT
+                  dosen.nidn,
+                  dosen.nama_dosen, 
+                  dosen.tanggal_lahir, 
+                  dosen.alamat,
+                  jurusan.nama_jurusan AS jurusan,
+                  jabatan.nama_jabatan AS jabatan
+                FROM
+                  $this->table, jurusan, jabatan
+                WHERE
+                  dosen.jurid = jurusan.jurid AND
+                  dosen.jbtid = jabatan.jbtid";
+      $this->db->query($query);
+      return $this->db->resultSet();
+    }
 }
