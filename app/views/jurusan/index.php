@@ -1,8 +1,19 @@
 <?php Flaser::flash(); ?>
 <main class="p-6">
-    <button id="openModalAddJurusan" type="button" class="bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Tambah Jurusan +</button>
-
     <div class="bg-white mt-4 rounded-xl shadow-sm p-6 border border-gray-100">
+        <div class="p-6 border-b border-gray-200">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+                <h3 class="text-lg font-semibold text-gray-800">Data Jurusan</h3>
+                <div class="flex space-x-2 mt-4 sm:mt-0">
+                    <button id="openModalAddJurusan" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-plus mr-2"></i>Tambah Jurusan
+                    </button>
+                    <button id="openModalEksJur" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-200">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                </div>
+            </div>
+        </div>
         <form action="<?= BASEURL ?>/jurusan/index" method="get">
             <div class="mb-4 flex gap-2">
                 <input type="text" name="search" placeholder="Cari jurusan..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">

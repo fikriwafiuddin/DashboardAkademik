@@ -46,4 +46,18 @@ class Jurusan extends Controller {
         header('Location: ' . BASEURL . '/jurusan/index');
         exit;
     }
+
+    public function exportPdf()
+    {
+        $jurusan = $this->model('Jurusan_model')->getAllJurusan('');
+        $data['jurusan'] = $jurusan;
+
+        ob_start();
+        $this->view('jurusan/export_pdf', $data);
+        $html = ob_get_clean();
+
+        $mpdf = new \Mpdf\Mpdf();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output('data-jurusan.pdf', 'D');
+    }
 }

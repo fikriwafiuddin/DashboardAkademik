@@ -11,17 +11,21 @@ class Jurusan_model extends Database {
 
     public function getAllJurusan($search)
     {
-        $this->db->query("SELECT
-                            jurusan.jurid, nama_jurusan, count(dosen.nidn) AS jumlah_dosen
+        $this->db->query("SELECT 
+                            jurusan.jurid, 
+                            jurusan.nama_jurusan, 
+                            COUNT(dosen.nidn) AS jumlah_dosen
                           FROM 
-                            $this->table, dosen
-                          WHERE
-                            jurusan.jurid = dosen.jurid AND
-                            nama_jurusan LIKE '%$search%' OR jurusan.jurid LIKE '%$search%'
-                          GROUP BY
-                            jurusan.jurid
-                          ORDER BY
+                            jurusan
+                          LEFT JOIN 
+                            dosen ON dosen.jurid = jurusan.jurid
+                          WHERE 
+                            jurusan.nama_jurusan LIKE ?
+                          GROUP BY 
+                            jurusan.jurid, jurusan.nama_jurusan
+                          ORDER BY 
                             jurusan.jurid ASC");
+        $this->db->bind('s', "%" . $search . "%");
         return $this->db->resultSet();
     }
 

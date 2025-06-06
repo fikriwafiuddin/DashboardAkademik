@@ -81,3 +81,15 @@ openModalEksDsn?.addEventListener("click", () => {
 closeModalEksDsn?.addEventListener("click", () => {
   modalEksDsn?.classList.add("hidden")
 })
+
+const openModalEksJur = document.getElementById("openModalEksJur")
+const modalEksJur = document.getElementById("modalEksJur")
+const closeModalEksJur = document.getElementById("closeModalEksJur")
+
+openModalEksJur?.addEventListener("click", () => {
+  modalEksJur?.classList.remove("hidden")
+})
+
+closeModalEksJur?.addEventListener("click", () => {
+  modalEksJur?.classList.add("hidden")
+})
