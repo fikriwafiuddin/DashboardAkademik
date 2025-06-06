@@ -93,3 +93,41 @@ openModalEksJur?.addEventListener("click", () => {
 closeModalEksJur?.addEventListener("click", () => {
   modalEksJur?.classList.add("hidden")
 })
+
+const formValidation = (idForm, idBtn) => {
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById(idForm)
+    const submitBtn = document.getElementById(idBtn)
+
+    const inputs = form.querySelectorAll("input, textarea, select")
+
+    function checkForm() {
+      let isFormValid = true
+
+      inputs.forEach((input) => {
+        if (input.value.trim() === "") {
+          isFormValid = false
+        }
+      })
+
+      submitBtn.disabled = !isFormValid
+      submitBtn.classList.toggle("opacity-50", !isFormValid) // optional visual
+      submitBtn.classList.toggle("cursor-not-allowed", !isFormValid)
+    }
+
+    // Cek form saat input berubah
+    inputs.forEach((input) => {
+      input.addEventListener("input", checkForm)
+      input.addEventListener("change", checkForm)
+    })
+
+    // Cek saat pertama dimuat
+    checkForm()
+  })
+}
+
+formValidation("formAddDosen", "submitBtn")
+formValidation("formEditDosen", "submitBtnEdit")
+formValidation("formAddJurusan", "submitBtn")
+formValidation("formEditJurusan", "submitBtn")
+formValidation("formLogin", "submitBtn")

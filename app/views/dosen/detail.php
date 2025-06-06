@@ -42,8 +42,8 @@ $jurusan = $data['jurusan'];
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
             </svg>
         </button>
-        <h2 class="text-center text-2xl font-medium mb-3">Form Tambah Dosen</h2>
-        <form action="<?= BASEURL; ?>/dosen/update" method="post">
+        <h2 class="text-center text-2xl font-medium mb-3">Form Ubah Dosen</h2>
+        <form id="formEditDosen" action="<?= BASEURL; ?>/dosen/update" method="post">
             <div class="space-y-2">
                 <div class="flex flex-col">
                     <!-- <label for="nidn">NIDN</label> -->
@@ -78,7 +78,7 @@ $jurusan = $data['jurusan'];
                     </select>
                 </div>
             </div>
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
+            <button id="submitBtnEdit" type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
         </form>
     </div>
 </div>

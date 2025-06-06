@@ -66,7 +66,7 @@ $jurusan = $data['jurusan'];
             </svg>
         </button>
         <h2 class="text-center text-2xl font-medium mb-3">Form Edit Jurusan</h2>
-        <form action="<?= BASEURL; ?>/jurusan/edit" method="post">
+        <form id="formEditJurusan" action="<?= BASEURL; ?>/jurusan/edit" method="post">
             <div class="space-y-2">
                 <input type="hidden" name="jurid" value="<?= $jurusan['jurid'] ?>">
                 <div class="flex flex-col">
@@ -74,7 +74,7 @@ $jurusan = $data['jurusan'];
                     <input type="text" value="<?= $jurusan['nama_jurusan'] ?>" class="bg-gray-100 py-2 px-1" name="nama_jurusan" id="nama_jurusan">
                 </div>
             </div>
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
+            <button id="submitBtn" type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
         </form>
     </div>
 </div>

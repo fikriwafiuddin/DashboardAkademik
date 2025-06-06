@@ -134,7 +134,7 @@ $page = $data['page'];
             </svg>
         </button>
         <h2 class="text-center text-2xl font-medium mb-3">Form Tambah Dosen</h2>
-        <form action="<?= BASEURL; ?>/dosen/add" method="post">
+        <form id="formAddDosen" action="<?= BASEURL; ?>/dosen/add" method="post">
             <div class="space-y-2">
                 <div class="flex flex-col">
                     <label for="nidn">NIDN</label>
@@ -169,7 +169,7 @@ $page = $data['page'];
                     </select>
                 </div>
             </div>
-            <button type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
+            <button id="submitBtn" type="submit" class="bg-blue-600 hover:bg-blue-700 w-full py-2 text-white rounded mt-3">Submit</button>
         </form>
     </div>
 </div>
