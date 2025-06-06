@@ -9,7 +9,7 @@ class Dosen_model extends Database {
         $this->db = new Database();
     }
 
-    public function getAllDosen()
+    public function getAllDosen($offset, $limit)
     {
         $this->db->query("SELECT
                             dosen.nidn, dosen.nama_dosen, jurusan.nama_jurusan AS jurusan, jabatan.nama_jabatan AS jabatan
@@ -17,7 +17,8 @@ class Dosen_model extends Database {
                             $this->table, jurusan, jabatan 
                           WHERE 
                             dosen.jurid = jurusan.jurid AND
-                            dosen.jbtid = jabatan.jbtid");
+                            dosen.jbtid = jabatan.jbtid
+                          LIMIT $limit OFFSET $offset");
         return $this->db->resultSet();
     }
 
@@ -107,11 +108,11 @@ class Dosen_model extends Database {
         return $this->db->resultSet();
     }
 
-    public function getCountJurusan()
+    public function getCountDosen()
     {
         $query = "SELECT count(nidn) FROM $this->table";
         $this->db->query($query);
         $row = $this->db->singleValue();
-        return $row[0] ?? null;
+        return $row[0] ?? 0;
     }
 }

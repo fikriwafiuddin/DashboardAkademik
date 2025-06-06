@@ -1,4 +1,11 @@
-<?php Flaser::flash(); ?>
+<?php
+
+Flaser::flash();
+
+$totalPages = $data['totalPages'];
+$page = $data['page'];
+
+?>
 <main class="p-6">
     <div id="dosen-section" class="content-section">
         <div class="bg-white rounded-xl shadow-sm border border-gray-100">
@@ -59,6 +66,58 @@
                     </table>
                 </div>
                 <?= count($data['dosen']) > 0 ? "" : '<p class="text-center text-2xl font-bold text-gray-600 mt-8">Data dosen tidak ditemukan</p>' ?>
+            
+            <nav aria-label="Page navigation">
+                <ul class="flex items-center justify-center gap-1 mt-4">
+
+                    <!-- Tombol Previous -->
+                    <li>
+                        <a href="?<?= http_build_query(['page' => max(1, $page - 1)]) ?>"
+                        class="px-3 py-1 rounded-md border text-sm font-medium text-blue-600 border-blue-600
+                                <?= $page <= 1 ? 'bg-blue-600 text-white cursor-not-allowed' : 'hover:bg-blue-600 hover:text-white' ?>">
+                            &laquo; Prev
+                        </a>
+                    </li>
+
+                    <?php
+                    $range = 1; // range kiri-kanan dari halaman aktif
+                    $start = max(1, $page - $range);
+                    $end = min($totalPages, $page + $range);
+
+                    if ($start > 1) {
+                        echo '<li><a href="?'.http_build_query(['page' => 1]).'" class="px-3 py-1 rounded-md border border-blue-600 text-blue-600 text-sm font-medium hover:bg-blue-600 hover:text-white">1</a></li>';
+                        if ($start > 2) echo '<li><span class="px-3 py-1 text-sm">...</span></li>';
+                    }
+
+                    for ($i = $start; $i <= $end; $i++): ?>
+                        <li>
+                            <a href="?<?= http_build_query(['page' => $i]) ?>"
+                            class="px-3 py-1 rounded-md border border-blue-600 text-blue-600 text-sm font-medium
+                                    <?= $i == $page ? 'bg-blue-600 text-white' : 'hover:text-white hover:bg-blue-600' ?>">
+                                <?= $i ?>
+                            </a>
+                        </li>
+                    <?php endfor;
+
+                    if ($end < $totalPages) {
+                        if ($end < $totalPages - 1) echo '<li><span class="px-3 py-1 text-sm">...</span></li>';
+                        echo '<li><a href="?'.http_build_query(['page' => $totalPages]).'" class="px-3 py-1 rounded-md border border-blue-600 text-blue-600 text-sm font-medium hover:bg-blue-600 hover:text-white">'.$totalPages.'</a></li>';
+                    }
+                    ?>
+
+                    <!-- Tombol Next -->
+                    <li>
+                        <a href="?<?= http_build_query(['page' => min($totalPages, $page + 1)]) ?>"
+                        class="px-3 py-1 rounded-md text-sm font-medium text-blue-600 border border-blue-600
+                                <?= $page >= $totalPages ? 'bg-blue-600 text-white cursor-not-allowed' : 'hover:bg-blue-600 hover:text-white' ?>">
+                            Next &raquo;
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+
+
             </div>
         </div>
     </div>
