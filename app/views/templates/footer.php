@@ -47,7 +47,7 @@
             </div>
             <p class="text-gray-600 mb-6">Pilih dokumen</p>
             <div class="flex space-x-4">
-                <a href="<?= BASEURL ?>/dosen/exportExcel" id="cancelLogout" class="flex-1 text-center px-4 py-2 bg-green-500 rounded-lg text-white hover:bg-green-600 transition-colors duration-200">
+                <a href="<?= BASEURL ?>/jurusan/exportExcel" id="cancelLogout" class="flex-1 text-center px-4 py-2 bg-green-500 rounded-lg text-white hover:bg-green-600 transition-colors duration-200">
                     <i class="fa-solid fa-file-excel"></i> EXCEL
                 </a>
                 <a href="<?= BASEURL ?>/jurusan/exportPdf" class="flex-1 text-center px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-200">

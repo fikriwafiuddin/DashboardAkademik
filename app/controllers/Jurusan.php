@@ -1,5 +1,8 @@
 <?php
 
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Jurusan extends Controller {
     public function index()
     {
@@ -61,5 +64,35 @@ class Jurusan extends Controller {
         $mpdf = new \Mpdf\Mpdf();
         $mpdf->WriteHTML($html);
         $mpdf->Output('data-jurusan.pdf', 'D');
+    }
+
+    public function exportExcel()
+    {
+        $jurusan = $this->model('Jurusan_model')->getAllJurusan('');
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+
+        // Header
+        $sheet->setCellValue('A1', 'No');
+        $sheet->setCellValue('B1', 'Id');
+        $sheet->setCellValue('C1', 'Nama');
+        $sheet->setCellValue('D1', 'Jumlah Dosen');
+
+        $row = 2;
+        $no = 1;
+        foreach ($jurusan as $j) {
+            $sheet->setCellValue('A' . $row, $no++);
+            $sheet->setCellValue('B' . $row, $j['Id']);
+            $sheet->setCellValue('C' . $row, $j['nama_jurusan']);
+            $sheet->setCellValue('D' . $row, $j['jumlah_dosen']);
+        }
+
+        header('Content-Type: application/vnd.ms-excel');
+        header('Content-Disposition: attachment;filename="data-jurusan.xlsx"');
+        header('Cache-Control: max-age=0');
+
+        $write = new Xlsx($spreadsheet);
+        $write->save('php://output');
     }
 }
