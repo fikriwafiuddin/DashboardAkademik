@@ -31,7 +31,7 @@ class Dosen extends Controller {
     {
         $data['dosen'] = $this->model('Dosen_model')->getDosenById($nidn);
         $data['jabatan'] = $this->model('Jabatan_model')->getAllJabatan();
-        $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan();
+        $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan('');
         $data['title'] = 'Detail Dosen';
         $this->view('templates/header', $data);
         $this->view('dosen/detail', $data);
