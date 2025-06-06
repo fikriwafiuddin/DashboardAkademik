@@ -3,8 +3,8 @@
     <button id="openModalAddJurusan" type="button" class="bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Tambah Jurusan +</button>
 
     <div class="bg-white mt-4 rounded-xl shadow-sm p-6 border border-gray-100">
-        <form class="mt-2" action="<?= BASEURL ?>/jurusan/add" method="get">
-            <input type="text" class="py-2 px-4 rounded shadow-sm bg-gray-100" name="search" id="search" placeholder="Cari jurusan">
+        <form class="mt-2" action="<?= BASEURL ?>/jurusan/index" method="get">
+            <input type="text" name="search" class="py-2 px-4 rounded shadow-sm bg-gray-100" name="search" id="search" placeholder="Cari jurusan">
             <button type="submit" class="bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <div class="overflow-x-auto">

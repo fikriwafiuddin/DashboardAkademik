@@ -3,7 +3,9 @@
 class Jurusan extends Controller {
     public function index()
     {
-        $jurusan = $this->model("Jurusan_model")->getAllJurusan();
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+        $jurusan = $this->model("Jurusan_model")->getAllJurusan($search);
         $data['jurusan'] = $jurusan;
         $this->view('templates/header');
         $this->view('jurusan/index', $data);

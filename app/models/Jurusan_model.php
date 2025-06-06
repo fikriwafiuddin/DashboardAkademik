@@ -9,14 +9,15 @@ class Jurusan_model extends Database {
         $this->db = new Database();
     }
 
-    public function getAllJurusan()
+    public function getAllJurusan($search)
     {
         $this->db->query("SELECT
                             jurusan.jurid, nama_jurusan, count(dosen.nidn) AS jumlah_dosen
                           FROM 
                             $this->table, dosen
                           WHERE
-                            jurusan.jurid = dosen.jurid
+                            jurusan.jurid = dosen.jurid AND
+                            nama_jurusan LIKE '%$search%' OR jurusan.jurid LIKE '%$search%'
                           GROUP BY
                             jurusan.jurid
                           ORDER BY
