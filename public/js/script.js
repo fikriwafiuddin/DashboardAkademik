@@ -57,3 +57,15 @@ logoutBtn?.addEventListener("click", () => {
 cancelLogout?.addEventListener("click", () => {
   logoutModal?.classList.add("hidden")
 })
+
+const sidebarToggle = document.getElementById("sidebarToggle")
+const sidebar = document.getElementById("sidebar")
+const closeSidebar = document.getElementById("closeSidebar")
+
+sidebarToggle?.addEventListener("click", () => {
+  sidebar?.classList.remove("hidden")
+})
+
+closeSidebar?.addEventListener("click", () => {
+  sidebar?.classList.add("hidden")
+})

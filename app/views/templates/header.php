@@ -32,9 +32,11 @@ $nav_links = [
 </head>
 <body class="bg-gray-50">
     <!-- Navigation Sidebar -->
-    <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-blue-800 to-blue-900 transform transition-transform duration-300 ease-in-out">
-        <div class="flex items-center justify-center h-16 bg-blue-900">
-            <h1 class="text-white text-xl font-bold">
+    <div id="sidebar" class="fixed hidden lg:block inset-y-0 left-0 z-50 w-64 bg-gradient-to-b from-blue-800 to-blue-900 transform transition-transform duration-300 ease-in-out">
+        
+        <div class="relative flex items-center justify-center h-16 bg-blue-900">
+            <button id="closeSidebar" class="absolute top-1 left-2 text-white text-xl lg:hidden" type="button"><i class="fa-solid fa-xmark"></i></button>
+            <h1 class="text-white text-md font-bold">
                 <i class="fas fa-graduation-cap mr-2"></i>Dashboard Akademik
             </h1>
         </div>
@@ -59,15 +61,15 @@ $nav_links = [
     </div>
 
         <!-- Main Content -->
-    <div class="ml-64">
+    <div class="lg:ml-64">
         <!-- Top Header -->
         <header class="bg-white shadow-sm border-b border-gray-200">
-            <div class="flex items-center justify-between px-6 py-4">
+            <div class="flex items-center justify-between px-2 lg:px-6 py-4">
                 <div class="flex items-center">
                     <button id="sidebarToggle" class="text-gray-500 hover:text-gray-700 focus:outline-none lg:hidden">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
-                    <h2 id="pageTitle" class="text-2xl font-semibold text-gray-800 ml-4">Dashboard Overview</h2>
+                    <h2 id="pageTitle" class="text-xl lg:text-2xl font-semibold text-gray-800 ml-4">Dashboard</h2>
                 </div>
                 
                 <div class="flex items-center space-x-4">
@@ -75,8 +77,8 @@ $nav_links = [
                         <i class="fas fa-user-circle text-2xl"></i>
                         <span class="hidden md:block"><?= $_SESSION['user']['username'] ?></span>
                     </div>
-                    <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 flex items-center">
-                        <i class="fas fa-sign-out-alt mr-2"></i>
+                    <button id="logoutBtn" class="bg-red-500 hover:bg-red-600 text-white px-2 lg:px-4 py-2 rounded-lg transition-colors duration-200 flex items-center">
+                        <i class="fas fa-sign-out-alt lg:mr-2"></i>
                         <span class="hidden md:block">Logout</span>
                     </button>
                 </div>
