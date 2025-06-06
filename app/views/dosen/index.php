@@ -24,9 +24,12 @@ $page = $data['page'];
             </div>
             
             <div class="p-6">
-                <div class="mb-4">
-                    <input type="text" placeholder="Cari dosen..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                </div>
+                <form action="<?= BASEURL ?>/dosen/index" method="get">
+                    <div class="mb-4 flex gap-2">
+                        <input type="text" name="search" placeholder="Cari dosen..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
                 
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200">

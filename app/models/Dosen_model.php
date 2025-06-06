@@ -9,7 +9,7 @@ class Dosen_model extends Database {
         $this->db = new Database();
     }
 
-    public function getAllDosen($offset, $limit)
+    public function getAllDosen($offset, $limit, $search)
     {
         $this->db->query("SELECT
                             dosen.nidn, dosen.nama_dosen, jurusan.nama_jurusan AS jurusan, jabatan.nama_jabatan AS jabatan
@@ -17,7 +17,8 @@ class Dosen_model extends Database {
                             $this->table, jurusan, jabatan 
                           WHERE 
                             dosen.jurid = jurusan.jurid AND
-                            dosen.jbtid = jabatan.jbtid
+                            dosen.jbtid = jabatan.jbtid AND
+                            (dosen.nama_dosen LIKE '%$search%' OR jurusan.nama_jurusan LIKE '%$search%')
                           LIMIT $limit OFFSET $offset");
         return $this->db->resultSet();
     }

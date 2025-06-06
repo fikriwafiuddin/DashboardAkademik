@@ -10,7 +10,9 @@ class Dosen extends Controller {
         $page = isset($_GET['page']) && $_GET['page'] > 0 ? (int)$_GET['page'] : 1;
         $offset = ($page - 1) * $limit;
 
-        $data['dosen'] = $this->model('Dosen_model')->getAllDosen($offset, $limit);
+        $search = isset($_GET['search']) ? $_GET['search'] : '';
+
+        $data['dosen'] = $this->model('Dosen_model')->getAllDosen($offset, $limit, $search);
         $data['jabatan'] = $this->model('Jabatan_model')->getAllJabatan();
         $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan();
         $data['totalPages'] = $totalPages;
