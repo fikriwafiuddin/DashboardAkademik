@@ -4,30 +4,35 @@
 
     <div class="bg-white mt-4 rounded-xl shadow-sm p-6 border border-gray-100">
         <form class="mt-2" action="<?= BASEURL ?>/jurusan/add" method="get">
-            <input type="text" class="py-2 px-4 rounded shadow-sm bg-gray-100" name="search" id="search" placeholder="Cari dosen">
+            <input type="text" class="py-2 px-4 rounded shadow-sm bg-gray-100" name="search" id="search" placeholder="Cari jurusan">
             <button type="submit" class="bg-blue-600 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
-        <table class="w-full mt-4">
-            <thead class="bg-gray-100">
-                <tr>
-                    <th class="px-3 py-1 text-left">Id</th>
-                    <th class="px-3 py-1 text-left">Nama</th>
-                    <th class="px-3 py-1 text-left" colspan="2">Aksi</th>
-                </tr>
-            </thead>
-            <tbody >
-                <?php foreach ($data['jurusan'] as $col) : ?>
+        <div class="overflow-x-auto">
+            <table class="min-w-full mt-4  divide-y divide-gray-200">
+                <thead class="bg-gray-50">
                     <tr>
-                        <?php foreach ($col as $key => $value) : ?>
-                            <td class="px-3 py-1"><?= $value ?></td>
-                        <?php endforeach; ?>
-                        <td class="px-3 py-1 flex gap-2 items-center">
-                            <a href="<?= BASEURL; ?>/jurusan/detail/<?= $col['jurid'] ?>" class="px-2 bg-blue-600 text-white rounded-sm">detail</a>
-                        </td>     
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jumlah Dosen</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider" colspan="2">Aksi</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    <?php foreach ($data['jurusan'] as $col) : ?>
+                        <tr class="hover:bg-gray-50">
+                            <?php foreach ($col as $key => $value) : ?>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"><?= $value ?></td>
+                            <?php endforeach; ?>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="<?= BASEURL; ?>/jurusan/detail/<?= $col['jurid'] ?>" class="text-blue-600 hover:text-blue-900 mr-3">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>     
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
         <?= count($data['jurusan']) > 0 ? "" : '<p class="text-center text-2xl font-bold text-gray-600 mt-8">Data jurusan tidak ditemukan</p>' ?>
     </div>
 </main>

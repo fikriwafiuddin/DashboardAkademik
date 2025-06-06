@@ -11,7 +11,16 @@ class Jurusan_model extends Database {
 
     public function getAllJurusan()
     {
-        $this->db->query("SELECT * FROM $this->table");
+        $this->db->query("SELECT
+                            jurusan.jurid, nama_jurusan, count(dosen.nidn) AS jumlah_dosen
+                          FROM 
+                            $this->table, dosen
+                          WHERE
+                            jurusan.jurid = dosen.jurid
+                          GROUP BY
+                            jurusan.jurid
+                          ORDER BY
+                            jurusan.jurid ASC");
         return $this->db->resultSet();
     }
 
