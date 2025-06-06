@@ -14,7 +14,7 @@ class Dosen extends Controller {
 
         $data['dosen'] = $this->model('Dosen_model')->getAllDosen($offset, $limit, $search);
         $data['jabatan'] = $this->model('Jabatan_model')->getAllJabatan();
-        $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan();
+        $data['jurusan'] = $this->model('Jurusan_model')->getAllJurusan('');
         $data['totalPages'] = $totalPages;
         $data['page'] = $page;
         
