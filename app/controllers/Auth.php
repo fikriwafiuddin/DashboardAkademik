@@ -13,7 +13,13 @@ class Auth extends Controller {
 
         $admin = $this->model("Admin_model")->getAdminByUsername($username);
 
-        if ($admin && $password === $admin['password']) {
+        if ($admin) {
+            if(!password_verify($password, $admin['password'])) {
+                Flaser::setFlash('Username atau password salah', 'error', 'login');
+                header('Location: ' . BASEURL . '/auth/login');
+                exit;
+            }
+
             $_SESSION['user'] = [
                 'username' => $admin['username']
             ];
